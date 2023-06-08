@@ -1,6 +1,36 @@
 #shopping-card-cuscatlan-service
 >Is responsible for keeping a record of the products selected by the customer, the quantity of each one, its price and the total purchase.We need to have the database for doing a shopping car.
 
+
+#Configuration application-properties: PUT THE VAUTL , talk to the DEVOPS:
+```
+server.port=${SERVER_PORT:2024}
+
+#Configuration connection mysql
+spring.datasource.url=${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/cuscatlanshoppingcard?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false}
+spring.datasource.username=${SPRING_DATASOURCE_USERNAME:root}
+spring.datasource.password=${SPRING_DATASOURCE_PASSWORD:}
+spring.datasource.platform=${SPRING_DATASOURCE_PLATORM:mysql}
+spring.datasource.driver-class-name=${SPRING_DATASOURCE_DRIVER_CLASS_NAME:com.mysql.cj.jdbc.Driver}
+
+
+#For generate database
+spring.sql.init.mode=always
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.defer-datasource-initialization=true
+
+
+#Consumer API:
+fake.store.api.url=${FAKE_STORE_API_URL:https://fakestoreapi.com/}
+device.security.cuscatlan.service.url=${DEVICE_SECURITY_CUSCATLAN_SERVICE_URL:http://localhost:2023}
+device.security.cuscatlan.service.auth.validate.endpoint=${DEVICE_SECURITY_CUSCATLAN_SERVICE_AUTH_VALIDATE_ENDPOINT:/auth/validation}
+
+spring.jackson.default-property-inclusion = NON_NULL
+```
+
+
+
+
 #Next I will place the CURLS to use to be able to occupy the service:
 
 ```
